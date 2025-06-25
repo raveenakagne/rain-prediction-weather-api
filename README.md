@@ -38,78 +38,45 @@ rain-prediction-weather-api/
 ├── .gitignore # Ignore .db and other sensitive files
 └── README.md # Project documentation
 
-shell
-Copy
-Edit
 
 ## End-to-End Pipeline
 
 ### Step 1: Fetch Forecast Data
-```bash
 python fetch_weather.py
-Step 2: Store Data in SQLite
-bash
-Copy
-Edit
+### Step 2: Store Data in SQLite
 python etl.py
-Step 3: Apply Rule-Based Labeling
-bash
-Copy
-Edit
+### Step 3: Apply Rule-Based Labeling
 python rule_logic.py
-Step 4: Clean & Prepare Data for Modeling
+### Step 4: Clean & Prepare Data for Modeling
 temperature is converted to numeric
-
 wind_speed is extracted from text
-
 Missing values are handled
-
-Step 5: Train and Evaluate Model
-bash
-Copy
-Edit
+### Step 5: Train and Evaluate Model
 python model.py
 Model: RandomForestClassifier
 Features: temperature, wind_speed
 Target: rain (1 = yes, 0 = no)
 Evaluation: classification report, feature importance
-
 Streamlit Dashboard
 Launch the App
-bash
-Copy
-Edit
 streamlit run app.py
 Dashboard Features
 Preview of stored forecast data
-
 EDA visualizations (temperature, wind, rain counts)
-
 Live prediction form: input temperature and wind to predict rain
-
 Cleaning Pipeline (cleaning.py)
 This module:
-
 Converts wind speed from text to integer
-
 Handles missing or malformed values
-
 Standardizes data for use in modeling and dashboard
-
 Used across:
-
 model.py
-
 app.py
-
 API Reference
 Data Source: https://api.weather.gov
 This is a free public weather API that requires no login or API key.
 
 Sample Output
-yaml
-Copy
-Edit
 Classification Report:
               precision    recall  f1-score   support
            0       0.89      1.00      0.94         8
@@ -118,16 +85,8 @@ Classification Report:
 Feature Importance:
 temperature: 0.68
 wind_speed: 0.32
-To Do
- Add multi-location support
 
- Export data to Google BigQuery
-
- Automate data updates (e.g., cron job)
-
- Deploy Streamlit app to web/cloud
-
-Author
+### Author
 Raveena Kagne
 Email: raveena.kagne@gmail.com
 GitHub: github.com/raveenakagne
